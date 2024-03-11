@@ -405,6 +405,7 @@ if __name__ == "__main__":
             print("Sintax error")
             break
 # ! /\|=\/
+```
 
 <h2>Bibliografía</h2>
     <div class="bibliografia">
@@ -413,10 +414,19 @@ if __name__ == "__main__":
                 <th>Referencia</th>
             </tr>
             <tr>
-                <td>Código ASCII. (s. f.). El código ASCII. Recuperado el 26 de febrero de 2024, de https://elcodigoascii.com.ar/<a href="https://elcodigoascii.com.ar/"></a></td>
+                <td>Varsity Tutors. (s.f.). Volumen de una esfera. Recuperado el 10 de marzo de 2024, de https://www.varsitytutors.com/hotmath/hotmath_help/spanish/topics/volume-of-a-sphere<a href="https://www.varsitytutors.com/hotmath/hotmath_help/spanish/topics/volume-of-a-sphere"></a></td>
             </tr>
             <tr>
-                <td>Recursos Python. (s. f.). Cómo obtener el código ASCII de un carácter y viceversa. Recuperado el 26 de febrero de 2024, de https://micro.recursospython.com/recursos/como-obtener-el-codigo-ascii-de-un-caracter.html <a href="https://micro.recursospython.com/recursos/como-obtener-el-codigo-ascii-de-un-caracter.html"></a></td>
-            </tr> 
+                <td>Varsity Tutors. (s.f.). Volumen de un cono. Recuperado el 10 de marzo de 2024, de https://www.varsitytutors.com/hotmath/hotmath_help/spanish/topics/volume-of-a-cone<a href="https://www.varsitytutors.com/hotmath/hotmath_help/spanish/topics/volume-of-a-cone"></a></td>
+            </tr>
+            <tr>
+                <td>Varsity Tutors. (s.f.). Área de superficie de una esfera. Recuperado el 10 de marzo de 2024, de https://www.varsitytutors.com/hotmath/hotmath_help/spanish/topics/surface-area-of-a-sphere<a href="https://www.varsitytutors.com/hotmath/hotmath_help/spanish/topics/surface-area-of-a-sphere"></a></td>
+            </tr>
+            <tr>
+                <td>Varsity Tutors. (s.f.). Área de superficie de un cono. Recuperado el 10 de marzo de 2024, de https://www.varsitytutors.com/hotmath/hotmath_help/spanish/topics/surface-area-of-a-cone<a href="https://www.varsitytutors.com/hotmath/hotmath_help/spanish/topics/surface-area-of-a-cone"></a></td>
+            </tr>
+            <tr>
+                <td>Gerencie.com. (s.f.). Cómo calcular el interés compuesto. Recuperado el 10 de marzo de 2024, de https://www.gerencie.com/como-calcular-el-interes-compuesto.html<a href="https://www.gerencie.com/como-calcular-el-interes-compuesto.html"></a></td>
+            </tr>
         </table>
     </div>
