@@ -353,6 +353,7 @@ if __name__ == "__main__":
 #Taller 1 - Punto 7
 #Escriba un programa que pida 5 números reales y calcule las siguientes operaciones: 
 #Promedio, mediana, promedio multiplicativo, ordenar los números de forma ascendente, ordenar los números de forma descendente, potencia del mayor número elevado al menor número, raíz cúbica del menor número.
+from funciones import ordenar_numeros
 
 def introducir():
     num1 : float = float(input("Ingrese el primer número. Ejemplo: 50.75: "))
@@ -360,8 +361,7 @@ def introducir():
     num3 : float = float(input("Ingrese el tercer número. Ejemplo: 50.75: "))
     num4 : float = float(input("Ingrese el cuarto número. Ejemplo: 50.75: "))
     num5 : float = float(input("Ingrese el quinto número. Ejemplo: 50.75: "))
-    numeros = [num1,num2,num3,num4,num5]
-    numeros.sort()
+    numeros = ordenar_numeros(num1,num2,num3,num4,num5)
     desarrollo(num1,num2,num3,num4,num5,numeros)
 
 def promedio(num1,num2,num3,num4,num5):
@@ -427,14 +427,389 @@ if __name__ == "__main__":
         elif opcion != 1 and 2:
             print("Sintax error")
             break
+        
 # ! /\|=\/
 ```
+
+**Ordenar los números** 
+```python
+def ordenar_numeros(num1,num2,num3,num4,num5):
+    # Encontrar el primer número más pequeño y asignarlo a la primera posición
+    if num1 < num2 and num1 < num3 and num1 < num4 and num1 < num5:
+        numeros = [num1, 0, 0, 0, 0]
+    elif num2 < num1 and num2 < num3 and num2 < num4 and num2 < num5:
+        numeros = [num2, 0, 0, 0, 0]
+    elif num3 < num1 and num3 < num2 and num3 < num4 and num3 < num5:
+        numeros = [num3, 0, 0, 0, 0]
+    elif num4 < num1 and num4 < num2 and num4 < num3 and num4 < num5:
+        numeros = [num4, 0, 0, 0, 0]
+    else:
+        numeros = [num5, 0, 0, 0, 0]
+
+    # Encontrar el segundo número más pequeño y asignarlo a la segunda posición
+    if (num1 <= num2 and num1 <= num3 and num1 <= num4 and num1 <= num5) or numeros[0] == num1:
+        if num2 <= num3 and num2 <= num4 and num2 <= num5:
+            numeros[1] = num2
+        elif num3 <= num2 and num3 <= num4 and num3 <= num5:
+            numeros[1] = num3
+        elif num4 <= num2 and num4 <= num3 and num4 <= num5:
+            numeros[1] = num4
+        else:
+            numeros[1] = num5
+    elif num2 <= num1 and num2 <= num3 and num2 <= num4 and num2 <= num5:
+        if num1 <= num3 and num1 <= num4 and num1 <= num5:
+            numeros[1] = num1
+        elif num3 <= num1 and num3 <= num4 and num3 <= num5:
+            numeros[1] = num3
+        elif num4 <= num1 and num4 <= num3 and num4 <= num5:
+            numeros[1] = num4
+        else:
+            numeros[1] = num5
+    elif num3 <= num1 and num3 <= num2 and num3 <= num4 and num3 <= num5:
+        if num1 <= num2 and num1 <= num4 and num1 <= num5:
+            numeros[1] = num1
+        elif num2 <= num1 and num2 <= num4 and num2 <= num5:
+            numeros[1] = num2
+        elif num4 <= num1 and num4 <= num2 and num4 <= num5:
+            numeros[1] = num4
+        else:
+            numeros[1] = num5
+    elif num4 <= num1 and num4 <= num2 and num4 <= num3 and num4 <= num5:
+        if num1 <= num2 and num1 <= num3 and num1 <= num5:
+            numeros[1] = num1
+        elif num2 <= num1 and num2 <= num3 and num2 <= num5:
+            numeros[1] = num2
+        elif num3 <= num1 and num3 <= num2 and num3 <= num5:
+            numeros[1] = num3
+        else:
+            numeros[1] = num5
+    else:
+        if num1 <= num2 and num1 <= num3 and num1 <= num4:
+            numeros[1] = num1
+        elif num2 <= num1 and num2 <= num3 and num2 <= num4:
+            numeros[1] = num2
+        elif num3 <= num1 and num3 <= num2 and num3 <= num4:
+            numeros[1] = num3
+        else:
+            numeros[1] = num4
+
+# Encontrar el tercer número más pequeño y asignarlo a la tercera posición
+    for i in range(2, 5):
+        if numeros[i] == 0:
+            smallest_remaining = min([num for num in [num1, num2, num3, num4, num5] if num not in numeros])
+            numeros[i] = smallest_remaining
+
+    return numeros
+
+# ! /\|=\/
+```
+
+
+<table cellspacing="1" bgcolor="" align="center">
+  <tr bgcolor="#252582">
+    <th><b>Reto 6 - Parte 8</b></th>
+  </tr>
+  <tr bgcolor="#e4e4ed">
+  <td style="color:#141414" align="center">Para el punto anterior incluir las funciones en un archivo independiente e importarlas para su uso.</td>
+  </tr>
+  <tr bgcolor="#e4e4ed">
+    <td style="color:#141414" align="center">Se reutilizo completamente el código anterior y se modificó de tal forma que la mayoría de las funciones se encuentran en un archivo diferente al principal.</td>
+  </tr>
+</table>
+
+**Parte 8** 
+```python
+#Reto 6 - Punto 8
+#Escriba un programa que pida 5 números reales y calcule las siguientes operaciones: 
+#Promedio, mediana, promedio multiplicativo, ordenar los números de forma ascendente, ordenar los números de forma descendente, potencia del mayor número elevado al menor número, raíz cúbica del menor número.
+from funciones import ordenar_numeros
+from funciones import promedio
+from funciones import mediana
+from funciones import promedio_multiplicativo
+from funciones import ascendente
+from funciones import descendente
+from funciones import potencia
+from funciones import raiz
+
+def introducir():
+    num1 : float = float(input("Ingrese el primer número. Ejemplo: 50.75: "))
+    num2 : float = float(input("Ingrese el segundo número. Ejemplo: 50.75: "))
+    num3 : float = float(input("Ingrese el tercer número. Ejemplo: 50.75: "))
+    num4 : float = float(input("Ingrese el cuarto número. Ejemplo: 50.75: "))
+    num5 : float = float(input("Ingrese el quinto número. Ejemplo: 50.75: "))
+    numeros = ordenar_numeros(num1,num2,num3,num4,num5)
+    desarrollo(num1,num2,num3,num4,num5,numeros)
+
+def desarrollo(num1,num2,num3,num4,num5,numeros):
+    promedio(num1,num2,num3,num4,num5)
+    mediana(numeros)
+    promedio_multiplicativo(num1,num2,num3,num4,num5)
+    ascendente(numeros)
+    descendente(numeros)
+    potencia(numeros)
+    raiz(numeros)
+    return
+    
+def continuar():
+    opcion : int = int(input("¿Desea continuar? Marque 1 (sí) o 2 (no): "))
+    return opcion
+
+if __name__ == "__main__":
+    print("Ingrese cinco número para realizar determinadas operaciones.")
+
+    while True:
+        introducir()
+        opcion = continuar()
+        if opcion == 2:
+            break
+        elif opcion != 1 and 2:
+            print("Sintax error")
+            break
+
+# ! /\|=\/
+```
+
+**Ordenar los números** 
+```python
+#Funciones
+
+def ordenar_numeros(num1,num2,num3,num4,num5):
+    # Encontrar el primer número más pequeño y asignarlo a la primera posición
+    if num1 < num2 and num1 < num3 and num1 < num4 and num1 < num5:
+        numeros = [num1, 0, 0, 0, 0]
+    elif num2 < num1 and num2 < num3 and num2 < num4 and num2 < num5:
+        numeros = [num2, 0, 0, 0, 0]
+    elif num3 < num1 and num3 < num2 and num3 < num4 and num3 < num5:
+        numeros = [num3, 0, 0, 0, 0]
+    elif num4 < num1 and num4 < num2 and num4 < num3 and num4 < num5:
+        numeros = [num4, 0, 0, 0, 0]
+    else:
+        numeros = [num5, 0, 0, 0, 0]
+
+    # Encontrar el segundo número más pequeño y asignarlo a la segunda posición
+    if (num1 <= num2 and num1 <= num3 and num1 <= num4 and num1 <= num5) or numeros[0] == num1:
+        if num2 <= num3 and num2 <= num4 and num2 <= num5:
+            numeros[1] = num2
+        elif num3 <= num2 and num3 <= num4 and num3 <= num5:
+            numeros[1] = num3
+        elif num4 <= num2 and num4 <= num3 and num4 <= num5:
+            numeros[1] = num4
+        else:
+            numeros[1] = num5
+    elif num2 <= num1 and num2 <= num3 and num2 <= num4 and num2 <= num5:
+        if num1 <= num3 and num1 <= num4 and num1 <= num5:
+            numeros[1] = num1
+        elif num3 <= num1 and num3 <= num4 and num3 <= num5:
+            numeros[1] = num3
+        elif num4 <= num1 and num4 <= num3 and num4 <= num5:
+            numeros[1] = num4
+        else:
+            numeros[1] = num5
+    elif num3 <= num1 and num3 <= num2 and num3 <= num4 and num3 <= num5:
+        if num1 <= num2 and num1 <= num4 and num1 <= num5:
+            numeros[1] = num1
+        elif num2 <= num1 and num2 <= num4 and num2 <= num5:
+            numeros[1] = num2
+        elif num4 <= num1 and num4 <= num2 and num4 <= num5:
+            numeros[1] = num4
+        else:
+            numeros[1] = num5
+    elif num4 <= num1 and num4 <= num2 and num4 <= num3 and num4 <= num5:
+        if num1 <= num2 and num1 <= num3 and num1 <= num5:
+            numeros[1] = num1
+        elif num2 <= num1 and num2 <= num3 and num2 <= num5:
+            numeros[1] = num2
+        elif num3 <= num1 and num3 <= num2 and num3 <= num5:
+            numeros[1] = num3
+        else:
+            numeros[1] = num5
+    else:
+        if num1 <= num2 and num1 <= num3 and num1 <= num4:
+            numeros[1] = num1
+        elif num2 <= num1 and num2 <= num3 and num2 <= num4:
+            numeros[1] = num2
+        elif num3 <= num1 and num3 <= num2 and num3 <= num4:
+            numeros[1] = num3
+        else:
+            numeros[1] = num4
+
+    # Encontrar el tercer número más pequeño y asignarlo a la tercera posición
+    for i in range(2, 5):
+        if numeros[i] == 0:
+            smallest_remaining = min([num for num in [num1, num2, num3, num4, num5] if num not in numeros])
+            numeros[i] = smallest_remaining
+
+    return numeros
+
+def promedio(num1,num2,num3,num4,num5):
+    promedio = (num1+num2+num3+num4+num5)/5
+    print(f"Promedio: {promedio}")
+    return
+
+def mediana(numeros):
+    if len(numeros) % 2 == 0:
+        mediana : float  = (numeros[len(numeros)//2-1] + numeros[len(numeros)//2])/2
+    else:
+        mediana = numeros[len(numeros)//2]
+    print(f"Mediana: {mediana}")
+    return
+
+def promedio_multiplicativo(num1,num2,num3,num4,num5):
+    promedio_multiplicativo : float = (num1*num2*num3*num4*num5)/5
+    print(f"Promedio multiplicativo: {promedio_multiplicativo}")
+    return
+
+def ascendente(numeros):
+    print(f"Números de forma ascendente: {numeros}")
+    return
+
+def descendente(numeros):
+    numeros.sort(reverse=True)
+    print(f"Números de forma descendente: {numeros}")
+    return
+
+def potencia(numeros):
+    potencia : float = (numeros[0])**numeros[-1]
+    print(f"Potencia del mayor número elevado al menor número: {potencia}")
+    return
+
+def raiz(numeros):
+    numero_menor = numeros[4]
+    raiz : float = numero_menor ** (1/3)
+    print(f"La raiz cúbica del número menor: {raiz}")
+    return
+
+# ! /\|=\/
+```
+
+
+<table cellspacing="1" bgcolor="" align="center">
+  <tr bgcolor="#252582">
+    <th><b>Reto 6 - Parte 9</b></th>
+  </tr>
+  <tr bgcolor="#e4e4ed">
+   <td style="color:#141414" align="center">Consultar qué es y cómo funciona pip en python.</td>
+  </tr>
+  <tr bgcolor="#e4e4ed">
+   <td style="color:#141414" align="center">
+        <li>PIP --> Python Package Index</li>
+        <li>Es el sistema de gestión de paquetes de Python.</li>
+        <li>Es una herramienta que facilita la <i>instalación</i>, <i>actualización</i> y <i>gestión de paquetes</i> y <i>dependencias</i> de <ins>Python</ins>.</li>
+        <li>Permite a los usuarios instalar <b>paquetes</b> de Python desde el <i>Python Package Index (PyPI)</i> y otros repositorios de paquetes.</li>
+   </td>
+  </tr>
+  <tr bgcolor="#e4e4ed">
+   <td style="color:#141414" align="center"><b>Instalación de PIP:</b>
+        <li>El PIP generalmente se instala automáticamente cuando se instala Python en el sistema. Sin embargo, si no se encuentra instalado, se puede instalar manualmente descargando el archivo de instalación desde <i>PyPI</i> e instalándolo.</li>
+   </td>
+  </tr>
+    <tr bgcolor="#e4e4ed">
+   <td style="color:#141414" align="center"><b>Uso básico:</b>
+        <li>Para <ins>instalar un paquete</ins>, se puede usar el comando pip install <i><nombre_del_paquete></i>. Esto descargará e instalará el paquete especificado desde <i>PyPI</i>.</li>
+        <li>Para <ins>instalar una versión específica</ins> de un paquete, se puede especificar la versión con <i>pip install <nombre_del_paquete>==<versión></i>.</li>
+        <li>Para <ins>actualizar</ins> un paquete a la última versión disponible, se puede usar <i>pip install --upgrade <nombre_del_paquete></i>.</li>
+        <li>Para <ins>desinstalar</ins> un paquete, se puede utilizar <i>pip uninstall <nombre_del_paquete></i>.</li>
+   </td>
+  </tr>
+  <tr bgcolor="#e4e4ed">
+   <td style="color:#141414" align="center"><b>Requerimientos de instalación:</b>
+        <li>PIP puede leer archivos de requisitos (como <i>requirements.txt</i>) que enumeran todos los paquetes necesarios para una aplicación.</li>
+        <li>Se pueden instalar todos los paquetes enumerados en un archivo de requisitos con el comando <i>pip install -r requirements.txt.</i></li>
+   </td>
+  </tr>  
+    <tr bgcolor="#e4e4ed">
+   <td style="color:#141414" align="center"><b>Entornos virtuales:</b>
+        <li>PIP es comúnmente utilizado en conjunción con <ins>entornos virtuales</ins> de Python. Estos entornos virtuales permiten aislar las dependencias de cada proyecto, lo que evita conflictos entre versiones de paquetes.</li>
+        <li>Se puede crear un entorno virtual utilizando <i>virtualenv</i> o el módulo <i>venv</i> de Python.</li>
+   </td>
+  </tr> 
+  </tr>  
+    <tr bgcolor="#e4e4ed">
+   <td style="color:#141414" align="center"><b>Otros repositorios:</b>
+        <li>PyPI es el repositorio predeterminado para los paquetes de Python, pero PIP también puede trabajar con otros repositorios de paquetes.</li>
+        <li>Se puede especificar el repositorio utilizando la opción <i>--index-url</i> o configurando opciones en un archivo de configuración.</li>
+   </td>
+  </tr>    
+</table>
+
+<table cellspacing="1" bgcolor="" align="center">
+  <tr bgcolor="#252582">
+    <th><b>Reto 6 - Parte 10</b></th>
+  </tr>
+  <tr bgcolor="#e4e4ed">
+    <td style="color:#141414" align="center">Hacer un listado de módulos populares para python que se puedan instalar com pip y consultar cómo instalarlos.</td>
+  </tr>
+  <tr bgcolor="#e4e4ed">
+   <td style="color:#141414" align="center"><b>numpy</b>
+        <li>Biblioteca fundamental para computación numérica en Python.</li>
+        <li><i>pip install numpy</i></li>
+   </td>
+  </tr>
+    <tr bgcolor="#e4e4ed">
+   <td style="color:#141414" align="center"><b>pandas</b>
+        <li>Biblioteca para manipulación y análisis de datos en Python.</li>
+        <li><i>pip install pandas</i></li>
+   </td>
+  </tr>
+    </tr>
+    <tr bgcolor="#e4e4ed">
+   <td style="color:#141414" align="center"><b>matplotlib</b>
+        <li>Biblioteca para crear visualizaciones estáticas, interactivas y animadas en Python.</li>
+        <li><i>pip install matplotlib</i></li>
+   </td>
+  </tr>
+    <tr bgcolor="#e4e4ed">
+   <td style="color:#141414" align="center"><b>scikit-learn</b>
+        <li>Biblioteca de aprendizaje automático para Python que proporciona algoritmos de clasificación, regresión, agrupación, entre otros.</li>
+        <li><i>pip install scikit-learn</i></li>
+   </td>
+  </tr>
+    <tr bgcolor="#e4e4ed">
+   <td style="color:#141414" align="center"><b>tensorflow</b>
+        <li>Biblioteca de aprendizaje automático de código abierto desarrollada por Google para construir y entrenar modelos de redes neuronales.</li>
+        <li><i>pip install tensorflow</i></li>
+   </td>
+  </tr>
+    </tr>
+    <tr bgcolor="#e4e4ed">
+   <td style="color:#141414" align="center"><b>keras</b>
+        <li>API de alto nivel para construir y entrenar modelos de aprendizaje profundo en Python.</li>
+        <li><i>pip install keras</i></li>
+   </td>
+  </tr>
+      <tr bgcolor="#e4e4ed">
+   <td style="color:#141414" align="center"><b>requests</b>
+        <li>Biblioteca HTTP para Python que permite enviar solicitudes HTTP/1.1 con Python.</li>
+        <li><i>pip install requests</i></li>
+   </td>
+  </tr>
+    <tr bgcolor="#e4e4ed">
+   <td style="color:#141414" align="center"><b>beautifulsoup4</b>
+        <li>Biblioteca para extraer datos de archivos HTML y XML.</li>
+        <li><i>pip install beautifulsoup4</i></li>
+   </td>
+  </tr>
+    <tr bgcolor="#e4e4ed">
+   <td style="color:#141414" align="center"><b>django</b>
+        <li>Framework web de Python de alto nivel que fomenta el desarrollo rápido y el diseño limpio y pragmático.</li>
+        <li><i>pip install django</i></li>
+   </td>
+  </tr>
+    </tr>
+    <tr bgcolor="#e4e4ed">
+   <td style="color:#141414" align="center"><b>flask</b>
+        <li>Framework web ligero de Python para construir aplicaciones web rápidas y escalables.</li>
+        <li><i>pip install flask</i></li>
+   </td>
+  </tr>
+</table>
+
 
 <h2>Bibliografía</h2>
     <div class="bibliografia">
         <table>
             <tr>
-                <th>Referencia</th>
+                <th>Referencias</th>
             </tr>
             <tr>
                 <td>Varsity Tutors. (s.f.). Volumen de una esfera. Recuperado el 10 de marzo de 2024, de https://www.varsitytutors.com/hotmath/hotmath_help/spanish/topics/volume-of-a-sphere<a href="https://www.varsitytutors.com/hotmath/hotmath_help/spanish/topics/volume-of-a-sphere"></a></td>
@@ -450,6 +825,18 @@ if __name__ == "__main__":
             </tr>
             <tr>
                 <td>Gerencie.com. (s.f.). Cómo calcular el interés compuesto. Recuperado el 10 de marzo de 2024, de https://www.gerencie.com/como-calcular-el-interes-compuesto.html<a href="https://www.gerencie.com/como-calcular-el-interes-compuesto.html"></a></td>
+            </tr>
+            <tr>
+                <td>Python Packaging User Guide. (2024). Installing Packages. Recuperado el 17 de marzo de 2024, de https://packaging.python.org/en/latest/tutorials/installing-packages/<a href="https://packaging.python.org/en/latest/tutorials/installing-packages/"></a></td>
+            </tr>
+            <tr>
+                <td>IMMUNE Technology Institute. (2022). Librerías de Python, ¿qué son y cuáles son las mejores? Recuperado el 17 de marzo de 2024, de https://immune.institute/blog/librerias-python-que-son/<a href="https://immune.institute/blog/librerias-python-que-son/"></a></td>
+            </tr>
+            <tr>
+                <td>Michigan Technological University. (s.f.). Installing, uninstalling, or upgrading Python modules using Pip (Linux - RHEL7). Recuperado el 17 de marzo de 2024, de https://servicedesk.mtu.edu/TDClient/1801/Portal/KB/ArticleDet?ID=66715<a href="https://servicedesk.mtu.edu/TDClient/1801/Portal/KB/ArticleDet?ID=66715"></a></td>
+            </tr>
+            <tr>
+                <td>El Libro De Python. (s.f.). Módulos en Python. Recuperado el 17 de marzo de 2024, de https://ellibrodepython.com/modulos-python<a href="https://ellibrodepython.com/modulos-python"></a></td>
             </tr>
         </table>
     </div>
