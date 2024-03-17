@@ -1,4 +1,8 @@
 # Reto_6
+| Nombre                 | Identificación | Grupo | Trabajo          |
+|------------------------|----------------|-------|------------------|
+| Angélica Pascagaza Vega| 1031652163     |   5   | Trabajo individual |
+
 <table cellspacing="1" bgcolor="" align="center">
   <tr bgcolor="#252582">
     <th><b>Reto 6 - Parte 1</b></th>
