@@ -21,9 +21,9 @@ def introducir():
 
 def desarrollo(num1,num2,num3,num4,num5,numeros):
     promedio(num1,num2,num3,num4,num5)
-    mediana(numeros)
     promedio_multiplicativo(num1,num2,num3,num4,num5)
     ascendente(numeros)
+    mediana(numeros)
     descendente(numeros)
     potencia(numeros)
     raiz(numeros)
