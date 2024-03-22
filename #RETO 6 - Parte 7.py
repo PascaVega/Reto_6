@@ -18,10 +18,7 @@ def promedio(num1,num2,num3,num4,num5):
     return
 
 def mediana(numeros):
-    if len(numeros) % 2 == 0:
-        mediana : float  = (numeros[len(numeros)//2-1] + numeros[len(numeros)//2])/2
-    else:
-        mediana = numeros[len(numeros)//2]
+    mediana = numeros[2]
     print(f"Mediana: {mediana}")
     return
 
@@ -52,9 +49,9 @@ def raiz(numeros):
 
 def desarrollo(num1,num2,num3,num4,num5,numeros):
     promedio(num1,num2,num3,num4,num5)
-    mediana(numeros)
     promedio_multiplicativo(num1,num2,num3,num4,num5)
     ascendente(numeros)
+    mediana(numeros)
     descendente(numeros)
     potencia(numeros)
     raiz(numeros)
